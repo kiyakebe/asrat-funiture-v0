@@ -1,5 +1,4 @@
 import style from '../style.module.css'
-// import Logo from '../../../../assets/images/logo.png'
 
 const FooterDescription = () =>{
     return(

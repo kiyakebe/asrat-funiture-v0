@@ -3,10 +3,11 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Furniture from "./pages/Furniture";
+import Shop from "./pages/Shop";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Profile from "./pages/profile";
 
 function App() {
 
@@ -16,9 +17,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}/>
           <Route path="/about" element={<About />}/>
-          <Route path="/furniture" element={<Furniture />}/>
+          <Route path="/shop" element={<Shop />}/>
           <Route path="/gallery" element={<Gallery />}/>
-          <Route path="/profile" element={<Gallery />}/>
+          <Route path="/profile" element={<Profile />}/>
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

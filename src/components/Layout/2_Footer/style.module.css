@@ -1,4 +1,4 @@
-/* @import url("../GeneralStyleAndColors/style.css"); */
+@import url(../../../index.css);
 
 .container_footer{
     padding-top: 8em;
@@ -7,7 +7,7 @@
 
 .footer_text_color{
     color:  white;
-    font-family: "Work sans", sans-serif !important;
+    font-family: "Work-sans" !important;
 }
 .footer_link{
     font-size: 0.9rem;

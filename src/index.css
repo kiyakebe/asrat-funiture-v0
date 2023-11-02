@@ -1,47 +1,59 @@
-
 @font-face {
-    font-family: "Familjen Grotesk";
-    src: url('../../assets/fonts/FamiljenGrotesk.woff2') format('woff2-variations');
-    font-weight: 400 700;
-    font-display: swap;
-}
-@font-face {
-    font-family: "Familjen Grotesk italic";
-    src: url('../../assets/fonts/FamiljenGrotesk-Italic.woff2') format('woff2-variations');
-    font-weight: 400 700;
-    font-display: swap;
+  font-family: "familjen-grotesk";
+  src: url("assets/fonts/FamiljenGrotesk.woff2")
+    format("woff2-variations");
+  font-weight: 400 700;
+  font-display: swap;
 }
 @font-face {
-    font-family: "Work sans";
-    src: url('../../assets/fonts/WorkSans.woff2') format('woff2-variations');
-    font-weight: 100 900;
-    font-display: swap;
+  font-family: "familjen-grotesk-italic";
+  src: url("assets/fonts/FamiljenGrotesk-Italic.woff2")
+    format("woff2-variations");
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "work-sans";
+  src: url("assets/fonts/WorkSans.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
 }
 
-:root{
-    --prim-color: #3366ff;
-    --bg-dark: #021a31;
-    --bg-gradient: linear-gradient(30deg, rgb(43, 93, 233), #cc00ff);
+:root {
+  line-height: 1.5;
+  font-size: 16px;
+
+  --prim-color: #3366ff;
+  --bg-dark: #021a31;
+  --bg-gradient: linear-gradient(30deg, rgb(43, 93, 233), #cc00ff);
 }
 
-[mode = dark]:root{
-    --prim-color: #101524;
-}
+/* :root {
+  --cl-primary: #2e3e79;
+  --cl-primary-light: #5263a0;
+  --cl-head-btn: #e5edfc;
+  --cl-secondary: #f16545;
+  --cl-secondary-light: #fe8f75;
+  --cl-third: #ffc93c;
+  --cl-bg: linear-gradient(#f7faff, #e5edfc);
+} */
 
 *,
 *::before,
-*::after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box !important;
+  font-family: "work-sans";
+  font-weight: 400;
 }
 html,
-body{
-    position: relative;
-    min-height: 100vh;
+body {
+  position: relative;
+  min-height: 100vh;
 }
 
 input :focus {
-    outline: none !important;
-    box-shadow: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }

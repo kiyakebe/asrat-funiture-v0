@@ -7,6 +7,7 @@ const Layout = () => {
     <>
     <Header />
     <Outlet />
+    <div style={{marginTop: "50rem"}}></div>
     <Footer />
     </>
   )

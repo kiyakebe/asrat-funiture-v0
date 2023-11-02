@@ -1,0 +1,28 @@
+/* @import url("../GeneralStyleAndColors/style.css"); */
+
+.container_footer{
+    padding-top: 8em;
+    background-color: var(--bg-dark);
+}
+
+.footer_text_color{
+    color:  white;
+    font-family: "Work sans", sans-serif !important;
+}
+.footer_link{
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+.footer_icon{
+    width: 2em;
+}
+
+.terms_privecy .fa_circle{
+    font-size: 5px;
+    margin-inline: 10px;
+}
+
+.map_iframe{
+    width: 100% !important;
+}

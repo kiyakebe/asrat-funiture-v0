@@ -1,0 +1,47 @@
+
+@font-face {
+    font-family: "Familjen Grotesk";
+    src: url('../../assets/fonts/FamiljenGrotesk.woff2') format('woff2-variations');
+    font-weight: 400 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Familjen Grotesk italic";
+    src: url('../../assets/fonts/FamiljenGrotesk-Italic.woff2') format('woff2-variations');
+    font-weight: 400 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Work sans";
+    src: url('../../assets/fonts/WorkSans.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+:root{
+    --prim-color: #3366ff;
+    --bg-dark: #021a31;
+    --bg-gradient: linear-gradient(30deg, rgb(43, 93, 233), #cc00ff);
+}
+
+[mode = dark]:root{
+    --prim-color: #101524;
+}
+
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html,
+body{
+    position: relative;
+    min-height: 100vh;
+}
+
+input :focus {
+    outline: none !important;
+    box-shadow: none !important;
+}

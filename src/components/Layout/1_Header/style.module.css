@@ -4,12 +4,39 @@
     font-weight: 400;
 } */
 .nav {
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 10px 20px -20px;
   z-index: 12;
+}
+.brand{
+  font-weight: 600;
+  color: var(--cl-primary);
 }
 .toggler_btn:focus,
 .toggler_btn{
   outline: none;
   border: none;
   box-shadow: unset;
+}
+.drop_down{
+  min-width: 10rem;
+}
+.links{
+  color: var(--cl-primary);
+  text-decoration: none;
+  margin-inline: 0.5rem;
+}
+.auth_btn{
+  /* border-radius: 10px; */
+  text-decoration: none;
+}
+.btn_login{
+  color: white;
+  background-color: var(--cl-primary);
+}
+.btn_signup{
+  /* color: black; */
+  color: white;
+  /* color: var(--cl-primary); */
+  /* border: 1px solid var(--cl-primary); */
+  border: 1px solid white;
 }

@@ -1,26 +1,28 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import style from "./style.module.css";
-import { useState } from "react";
+
+import profile from "../../../assets/profile/user.jpg";
 
 const ProfileDropdown = () => {
   return (
-    <div className="dropdown text-end bg- ">
+    <div className={`dropdown text-end ${style.drop_down}`}>
       <a
         href="#"
         className="d-block link-dark text-decoration-none dropdown-toggle"
-        id="dropdownUser1"
+        id="useProfile"
         data-bs-toggle="dropdown"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         <img
-          src="https://github.com/mdo.png"
+          src={profile}
           alt="mdo"
           width="32"
           height="32"
           className="rounded-circle"
         />
       </a>
-      <ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+      <ul className="dropdown-menu text-small" aria-labelledby="useProfile">
         <li>
           <a className="dropdown-item" href="/profile">
             Profile
@@ -35,11 +37,7 @@ const ProfileDropdown = () => {
           <hr className="dropdown-divider" />
         </li>
         <li>
-          <button
-            // onClick={() => setIsLodegin(!islogedin)}
-            type="button"
-            className="btn btn-outline-primary w-100"
-          >
+          <button type="button" className="btn btn-outline-primary w-100">
             Sign out
           </button>
         </li>
@@ -50,16 +48,16 @@ const ProfileDropdown = () => {
 
 const LoginButton = () => {
   return (
-    <div className="d-flex justify-content-start justify-content-md-end">
+    <div className="d-flex justify-content-start justify-content-md-end ">
       <NavLink
         to="/login"
-        className=" col-6 flex-shrink-1 col-md-auto px-3 py-2 mx-2 btn btn-primary"
+        className={`col-6 flex-shrink-1 col-md-auto px-3 py-1 mx-2 ${style.auth_btn} ${style.btn_login}`}
       >
         Login
       </NavLink>
       <NavLink
         to="/signup"
-        className=" col-6 flex-shrink-1 col-md-auto  px-3 py-2 mx-2 btn btn-outline-primary"
+        className={`col-6 flex-shrink-1 col-md-auto px-3 py-1 mx-2 ${style.auth_btn} ${style.btn_signup}`}
       >
         Sigh up
       </NavLink>
@@ -72,11 +70,11 @@ const Header = () => {
 
   return (
     <nav
-      className={`navbar navbar-expand-md navbar-light my-3 ${style.nav}`}
+      className={`navbar navbar-expand-md navbar-light py-1 position-fixed w-100 ${style.nav}`}
       aria-label="Second navbar example"
     >
       <div className="container-md">
-        <a className="navbar-brand" href="#">
+        <a className={`navbar-brand fs-2 ${style.brand}`} href="#">
           Asrat
         </a>
         <button
@@ -97,23 +95,24 @@ const Header = () => {
         >
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">
+              <NavLink className={style.links} to="/">
                 Home
               </NavLink>
             </li>
+
             <li className="nav-item">
-              <NavLink className="nav-link" to="/about">
-                About
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/shop">
+              <NavLink className={style.links} to="/shop">
                 shop
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/gallery">
+              <NavLink className={style.links} to="/gallery">
                 Gallery
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className={style.links} to="/about">
+                About
               </NavLink>
             </li>
           </ul>

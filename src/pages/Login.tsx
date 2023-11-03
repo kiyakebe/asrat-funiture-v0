@@ -1,8 +1,7 @@
+import Logincomp from '../components/Authentication/Login'
 
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
+  return <Logincomp />
 }
 
 export default Login

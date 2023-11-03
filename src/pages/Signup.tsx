@@ -1,7 +1,7 @@
+import Signupcomp from '../components/Authentication/Signup'
 
 const Signup = () => {
-  return (
-    <div>Signup</div>
+  return (<Signupcomp />
   )
 }
 

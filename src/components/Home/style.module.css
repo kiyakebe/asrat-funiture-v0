@@ -1,14 +1,13 @@
-
-.hero_slide_container{
+.hero_slide_container {
   height: 100vh;
   width: 100%;
   background-image: url(../../assets/bg/bg.svg);
   background-size: cover;
 }
 
-.hero_description .lead_head{
+.hero_description .lead_head {
   font-size: calc(2vw + 20px);
-  font-family: 'familjen-grotesk', sans-serif;
+  font-family: "familjen-grotesk", sans-serif;
 
   font-weight: 700;
   text-transform: capitalize;
@@ -17,15 +16,15 @@
 
 .hero_description .hero_ripple {
   position: relative;
-  font-size: 16px;  
+  font-size: 16px;
   height: 2.5em;
   width: 8em;
-  border: 2px solid #0460CC;
+  border: 2px solid #0460cc;
   border-radius: 20px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
 }
-.hero_description .hero_ripple::before{
+.hero_description .hero_ripple::before {
   opacity: 0;
   position: absolute;
   content: "";
@@ -33,18 +32,60 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: #0460CC;
+  background: #0460cc;
   border-radius: 20px;
   animation: ripple 2s cubic-bezier(0.65, 0, 0.34, 1) infinite;
   z-index: -1;
 }
 @keyframes ripple {
   from {
-      opacity: 1;
-      transform: scale3d(0.75, 0.75, 1);
+    opacity: 1;
+    transform: scale3d(0.75, 0.75, 1);
   }
   to {
-      opacity: 0;
-      transform: scale3d(1.5, 2, 1);
+    opacity: 0;
+    transform: scale3d(1.5, 2, 1);
   }
+}
+
+/* ========================== benefits ============================ */
+
+.benefit {
+  position: relative;
+}
+.benefit::before {
+  content: "";
+  width: 6rem;
+  height: 0.2rem;
+  margin-right: 1rem;
+  background-color: var(--cl-primary);
+  opacity: 0.6;
+}
+
+/* ========================== Experience ============================ */
+
+.exp_img {
+  border-radius: 1rem;
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+/* ========================== Process ============================ */
+
+.proc_img {
+  border-radius: 1rem;
+  object-fit: cover;
+  width: 100%;
+}
+.border_line{
+  position: relative;
+}
+.border_line::before{
+  content: '';
+  position: absolute;
+  left: -2rem;
+  height: 100%;
+  width: 0.2rem;
+  background-color: var(--cl-primary);
 }

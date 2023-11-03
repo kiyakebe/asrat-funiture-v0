@@ -61,6 +61,19 @@ body {
   min-height: 100vh;
 }
 
+.cl-primary{
+  color: var(--cl-primary);
+}
+.cl-secondary{
+  color: var(--cl-secondary);
+}
+.bg-primary{
+  background-color: var(--cl-primary) !important;
+}
+.bg-secondary{
+  background-color: var(--cl-secondary);
+}
+
 input :focus {
   outline: none !important;
   box-shadow: none !important;

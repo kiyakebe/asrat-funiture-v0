@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import style from "./style.module.css";
 
 import profile from "../../../assets/profile/user.jpg";
+import apiClient from "../../../services/api-client";
 
 const ProfileDropdown = () => {
+
+  useEffect(() => {
+    document.title = "Your Profile"
+  })
+
   return (
     <div className={`dropdown text-end ${style.drop_down}`}>
       <a
@@ -37,7 +43,7 @@ const ProfileDropdown = () => {
           <hr className="dropdown-divider" />
         </li>
         <li>
-          <button type="button" className="btn btn-outline-primary w-100">
+          <button type="button" className="btn btn-outline-primary w-100" onClick={logoutHanler}>
             Sign out
           </button>
         </li>
@@ -65,8 +71,29 @@ const LoginButton = () => {
   );
 };
 
+const logoutHanler = () => {
+  localStorage.removeItem("access");
+  localStorage.removeItem("refresh");
+}
+
 const Header = () => {
-  const [islogedin, setIsLodegin] = useState(false);
+  const [islogedin, setIsLodegin] = useState(true);
+
+  useEffect(() => {
+    const access = localStorage.getItem("access");
+    const data = { token: access };
+    const checkLigedin = () => {
+      apiClient
+        .post("/auth/jwt/verify/", data)
+        .then(() => {
+          console.log(data)
+          setIsLodegin(true);
+        })
+        .catch((errors) => setIsLodegin(false));
+    };
+    checkLigedin();
+  }, []);
+  
 
   return (
     <nav

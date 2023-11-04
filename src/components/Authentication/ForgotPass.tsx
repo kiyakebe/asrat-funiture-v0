@@ -4,16 +4,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import apiClient from "../../services/api-client";
 
 import style from "./style.module.css";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const schema = z.object({
   email: z
     .string({ required_error: "Username is Required" })
-    .min(6, { message: "Username is at least 6 characters" })
+    .min(6, { message: "Username is at least 6 characters" }),
 });
 
 type FormData = z.infer<typeof schema>;
 
 const ForgotPass = () => {
+  const [isReset, setIsReset] = useState(false);
+  useEffect(() => {
+    document.title = "Reset Your Password";
+  });
 
   const {
     register,
@@ -24,9 +30,12 @@ const ForgotPass = () => {
   const onSubmit = (data: FieldValues) => {
     console.log(data);
     apiClient
-      .post("/auth/jwt/create/", data)
+      .post("/auth/users/reset_password/", data)
       .then((res) => {
-        console.log(res.data)
+        console.log(res.status);
+        if (res.status === 204) {
+          setIsReset(true);
+        }
       })
       .catch((errors) => console.log(errors));
   };
@@ -36,42 +45,47 @@ const ForgotPass = () => {
       className="container-fluid d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
-      <form
-        method="POST"
-        className={`card p-5 ${style.form_login}`}
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="my-3">
-          <h3 className={style.form_title}>Reset</h3>
+      {isReset ? (
+        <div className="alert alert-success">
+          <strong>Success! </strong>We have sent an email to you account, go and
+          reset your password.
         </div>
-        <div className="my-3">
-          <label className="fs-6 w-100 cl-primary fw-medium ">
-            Email
-            <input
-              type="text"
-              className={`form-control ${style.form_input}`}
-              {...register("email")}
-            />
-          </label>
-          {errors.email && (
-            <p className="text-danger"> {errors.email.message} </p>
-          )}
-        </div>
-        <button type="submit" className={style.form_button}>
-          Reset
-        </button>
+      ) : (
+        <form
+          method="POST"
+          className={`card p-5 ${style.form_login}`}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="my-3">
+            <h3 className={style.form_title}>Reset</h3>
+          </div>
+          <div className="my-3">
+            <label className="fs-6 w-100 cl-primary fw-medium ">
+              Email
+              <input
+                type="text"
+                className={`form-control ${style.form_input}`}
+                {...register("email")}
+              />
+            </label>
+            {errors.email && (
+              <p className="text-danger"> {errors.email.message} </p>
+            )}
+          </div>
+          <button type="submit" className={style.form_button}>
+            Reset
+          </button>
 
-        <div className="mt-3 d-flex">
-          <p className="mx-1">Forgot Password? </p>
-          <a href="/login" className="mx-1">
-            Login
-          </a>
-        </div>
-      </form>
-
+          <div className="mt-3 d-flex">
+            <p className="mx-1">Forgot Password? </p>
+            <a href="/login" className="mx-1">
+              Login
+            </a>
+          </div>
+        </form>
+      )}
     </div>
   );
 };
 
 export default ForgotPass;
-

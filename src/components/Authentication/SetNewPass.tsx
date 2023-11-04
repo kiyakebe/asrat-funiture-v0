@@ -21,7 +21,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Login = () => {
+const SetNewPass = () => {
   const navigation = useNavigate();
   const [viewPass, setViewPass] = useState(false);
 
@@ -103,7 +103,7 @@ const Login = () => {
 
         <div className="mt-3 d-flex">
           <p className="mx-1">Forgot Password? </p>
-          <a href="/reset-password" className="mx-1">
+          <a href="/resetpassword" className="mx-1">
             Reset
           </a>
         </div>
@@ -119,4 +119,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SetNewPass;

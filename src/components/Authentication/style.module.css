@@ -1,9 +1,10 @@
 .form {
   width: clamp(50rem, 25rem + 1vw, 30rem);
-
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .form_login {
   width: clamp(30rem, 25rem + 1vw, 30rem);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .form_title {
   color: rgb(52, 86, 189);
@@ -12,14 +13,15 @@
 .form_input {
   margin-top: 0.3rem;
   padding: 0.3rem 0.5rem;
+  border: 2px solid var(--cl-primary-light);
 }
 .password_group {
   position: relative;
 }
 .password_toggler {
   position: absolute;
-  right: 1rem;
-  top: 2.5rem;
+  right: 1.2rem;
+  top: 2.2rem;
 }
 .form_button {
   padding: 0.5rem;

@@ -1,7 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import apiClient from "../../services/api-client";
 
 import style from "./style.module.css";
 
@@ -23,11 +23,10 @@ const ForgotPass = () => {
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
-    axios
-      .post("http://127.0.0.1:8000/auth/jwt/create/", data)
+    apiClient
+      .post("/auth/jwt/create/", data)
       .then((res) => {
-        localStorage.setItem("refresh", res.data.refresh);
-        localStorage.setItem("access", res.data.access);
+        console.log(res.data)
       })
       .catch((errors) => console.log(errors));
   };
@@ -46,7 +45,7 @@ const ForgotPass = () => {
           <h3 className={style.form_title}>Reset</h3>
         </div>
         <div className="my-3">
-          <label className="fs-6 w-100 form-label">
+          <label className="fs-6 w-100 cl-primary fw-medium ">
             Email
             <input
               type="text"

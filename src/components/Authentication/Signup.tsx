@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import apiClient from "../../services/api-client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -52,8 +53,8 @@ const Signup = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    axios
-      .post("http://127.0.0.1:8000/auth/users/", data)
+    apiClient
+      .post("/auth/users/", data)
       .then((res) => {
         console.log(res.status === 201);
         if (res.status === 201) {
@@ -82,7 +83,7 @@ const Signup = () => {
           </div>
           <div className="row">
             <div className="col-12 col-md-6 mb-3">
-              <label className={`fs-6 w-100 ${style.form_label}`}>
+              <label className={`fs-6 w-100 cl-primary fw-medium `}>
                 First Name
                 <input
                   type="text"
@@ -95,7 +96,7 @@ const Signup = () => {
               )}
             </div>
             <div className="col-12 col-md-6 mb-3">
-              <label className={`fs-6 w-100 ${style.form_label}`}>
+              <label className={`fs-6 w-100 cl-primary fw-medium `}>
                 Last Name
                 <input
                   type="text"
@@ -111,7 +112,7 @@ const Signup = () => {
 
           <div className="row">
             <div className="col-12 col-md mb-3">
-              <label className={`fs-6 w-100 ${style.form_label}`}>
+              <label className={`fs-6 w-100 cl-primary fw-medium `}>
                 Email
                 <input
                   type="email"
@@ -124,7 +125,7 @@ const Signup = () => {
               )}
             </div>
             <div className="col-12 col-md mb-3">
-              <label className={`fs-6 w-100 ${style.form_label}`}>
+              <label className={`fs-6 w-100 cl-primary fw-medium `}>
                 Username
                 <input
                   type="text"
@@ -140,7 +141,7 @@ const Signup = () => {
 
           <div className="row">
             <div className={`col-12 col-md mb-3 ${style.password_group}`}>
-              <label  className={`fs-6 w-100 ${style.form_label}`}>
+              <label  className={`fs-6 w-100 cl-primary fw-medium `}>
                 Password
                 <input
                   type={viewPass ? "text" : "password"}
@@ -164,7 +165,7 @@ const Signup = () => {
               )}
             </div>
             <div className={`col-12 col-md mb-3 ${style.password_group}`}>
-              <label  className={`fs-6 w-100 ${style.form_label}`}>
+              <label  className={`fs-6 w-100 cl-primary fw-medium `}>
                 Confirm Password
                 <input
                   type={viewPassC ? "text" : "password"}
@@ -189,7 +190,7 @@ const Signup = () => {
           </div>
           <div className="row">
             <div className="col-12 col-md mb-3">
-              <label className={`fs-6 w-100 ${style.form_label}`}>
+              <label className={`fs-6 w-100 cl-primary fw-medium `}>
                 Phone Number
                 <input
                   type="text"

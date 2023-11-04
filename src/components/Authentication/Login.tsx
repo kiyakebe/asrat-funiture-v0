@@ -2,7 +2,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import apiClient from "../../services/api-client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -31,7 +31,7 @@ const Login = () => {
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
-    axios
+    apiClient
       .post("http://127.0.0.1:8000/auth/jwt/create/", data)
       .then((res) => {
         localStorage.setItem("refresh", res.data.refresh);
@@ -53,8 +53,8 @@ const Login = () => {
         <div className="my-3">
           <h3 className={style.form_title}>Login</h3>
         </div>
-        <div className="m-2">
-          <label className="fs-6 w-100 form-label">
+        <div className="my-2">
+          <label className="fs-6 w-100 cl-primary fw-medium ">
             Username
             <input
               type="text"
@@ -68,7 +68,7 @@ const Login = () => {
         </div>
         <div className="my-2">
           <div className={`col-12 col-md mb-3 ${style.password_group}`}>
-            <label className="fs-6 w-100 form-label">
+            <label className="fs-6 w-100 form-label cl-primary fw-medium ">
               Password
               <input
                 type={viewPass ? "text" : "password"}
@@ -98,7 +98,7 @@ const Login = () => {
 
         <div className="mt-3 d-flex">
           <p className="mx-1">Forgot Password? </p>
-          <a href="/reset-password" className="mx-1">
+          <a href="/resetpassword" className="mx-1">
             Reset
           </a>
         </div>
@@ -110,7 +110,6 @@ const Login = () => {
           </a>
         </div>
       </form>
-
     </div>
   );
 };

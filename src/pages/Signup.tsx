@@ -1,8 +1,7 @@
-import Signupcomp from '../components/Authentication/Signup'
+import Signupcomp from "../components/Authentication/Signup";
 
 const Signup = () => {
-  return (<Signupcomp />
-  )
-}
+  return <Signupcomp />;
+};
 
-export default Signup
+export default Signup;

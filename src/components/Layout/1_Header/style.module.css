@@ -1,8 +1,5 @@
 @import url(../../../index.css);
-/* .head{
-    font-family: "work-sans";
-    font-weight: 400;
-} */
+
 .nav {
   box-shadow: rgba(0, 0, 0, 0.45) 0px 10px 20px -20px;
   z-index: 12;
@@ -20,13 +17,18 @@
 .drop_down{
   min-width: 10rem;
 }
+.profile{
+  border-radius: 50%;
+  width: 40px;
+  aspect-ratio: 1/1;
+  border: 2px solid white;
+}
 .links{
   color: var(--cl-primary);
   text-decoration: none;
   margin-inline: 0.5rem;
 }
 .auth_btn{
-  /* border-radius: 10px; */
   text-decoration: none;
 }
 .btn_login{
@@ -34,10 +36,7 @@
   background-color: var(--cl-primary);
 }
 .btn_signup{
-  /* color: black; */
   color: white;
-  /* color: var(--cl-primary); */
-  /* border: 1px solid var(--cl-primary); */
   border: 1px solid white;
 }
 

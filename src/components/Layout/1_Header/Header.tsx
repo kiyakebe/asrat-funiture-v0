@@ -23,9 +23,7 @@ const ProfileDropdown = () => {
         <img
           src={profile}
           alt="mdo"
-          width="32"
-          height="32"
-          className="rounded-circle"
+          className={style.profile}
         />
       </a>
       <ul className="dropdown-menu text-small" aria-labelledby="useProfile">
@@ -77,7 +75,7 @@ const logoutHanler = () => {
 }
 
 const Header = () => {
-  const [islogedin, setIsLodegin] = useState(true);
+  const [islogedin, setIsLodegin] = useState(false);
 
   useEffect(() => {
     const access = localStorage.getItem("access");
@@ -85,13 +83,13 @@ const Header = () => {
     const checkLigedin = () => {
       apiClient
         .post("/auth/jwt/verify/", data)
-        .then(() => {
-          console.log(data)
+        .then((res) => {
+          // console.log(res)
           setIsLodegin(true);
         })
         .catch((errors) => setIsLodegin(false));
     };
-    checkLigedin();
+    access && checkLigedin();
   }, []);
   
 

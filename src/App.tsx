@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import apiClient from "./services/api-client";
@@ -34,9 +34,8 @@ function App() {
         })
         .catch((errors) => setIsLodegin(false));
     };
-    checkLigedin();
+    access && checkLigedin();
   }, []);
-
 
   return (
     <Router>
@@ -55,6 +54,7 @@ function App() {
         {!islogedin && <Route path="/reset-password" element={<ForgotPass />} />}
         {!islogedin && <Route path="/set-new-password" element={<SetNewPass />} />}
       </Routes>
+      {location.pathname}
     </Router>
   );
 }

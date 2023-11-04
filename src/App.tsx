@@ -7,7 +7,7 @@ import Shop from "./pages/Shop";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Profile from "./pages/Profile";
+// import Profile from "./pages/Profile";
 import ForgotPass from "./components/Authentication/ForgotPass";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
           <Route path="/about" element={<About />}/>
           <Route path="/shop" element={<Shop />}/>
           <Route path="/gallery" element={<Gallery />}/>
-          <Route path="/profile" element={<Profile />} />
+          {/* <Route path="/profile" element={<Profile />} /> */}
         </Route>
 
         <Route path="/login" element={<Login />} />

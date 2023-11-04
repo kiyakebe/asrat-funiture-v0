@@ -66,7 +66,7 @@ const LoginButton = () => {
 };
 
 const Header = () => {
-  const [islogedin, setIsLodegin] = useState(true);
+  const [islogedin, setIsLodegin] = useState(false);
 
   return (
     <nav

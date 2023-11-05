@@ -32,7 +32,6 @@ const Login = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
     apiClient
       .post("/auth/jwt/create/", data)
       .then((res) => {

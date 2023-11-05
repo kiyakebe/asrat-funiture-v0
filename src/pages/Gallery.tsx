@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import FurnitureGallery from '../components/Gallery/Gallery'
 
 const Gallery = () => {
   useEffect(() => {
@@ -6,7 +7,8 @@ const Gallery = () => {
   })
 
   return (
-    <div>Gallery</div>
+    <FurnitureGallery />
+    // <h1>fdsjk</h1>
   )
 }
 

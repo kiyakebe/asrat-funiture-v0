@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
 import profile from "../../../assets/profile/user.jpg";
 import apiClient from "../../../services/api-client";
 
 const ProfileDropdown = () => {
+
+  const navigation = useNavigate()
 
   useEffect(() => {
     document.title = "Your Profile"
@@ -41,7 +43,11 @@ const ProfileDropdown = () => {
           <hr className="dropdown-divider" />
         </li>
         <li>
-          <button type="button" className="btn btn-outline-primary w-100" onClick={logoutHanler}>
+          <button type="button" className="btn btn-outline-primary w-100" onClick={() => {
+              localStorage.removeItem("access");
+              localStorage.removeItem("refresh");
+              navigation("/login")
+          }}>
             Sign out
           </button>
         </li>
@@ -69,10 +75,10 @@ const LoginButton = () => {
   );
 };
 
-const logoutHanler = () => {
-  localStorage.removeItem("access");
-  localStorage.removeItem("refresh");
-}
+// const logoutHanler = () => {
+//   localStorage.removeItem("access");
+//   localStorage.removeItem("refresh");
+// }
 
 const Header = () => {
   const [islogedin, setIsLodegin] = useState(false);
@@ -84,7 +90,6 @@ const Header = () => {
       apiClient
         .post("/auth/jwt/verify/", data)
         .then((res) => {
-          // console.log(res)
           setIsLodegin(true);
         })
         .catch((errors) => setIsLodegin(false));

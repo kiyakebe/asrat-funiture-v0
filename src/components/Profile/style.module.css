@@ -1,0 +1,15 @@
+.profile{
+    min-height: 100vh;
+    width: 100%;
+    /* display: flex; */
+    /* background-color: var(--cl-primary); */
+}
+.profile_pic{
+    width: 8rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 5px solid var(--cl-secondary);
+}
+table{
+    color: var(--cl-primary);
+}

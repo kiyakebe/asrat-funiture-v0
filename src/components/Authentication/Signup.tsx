@@ -39,7 +39,7 @@ const schema = z
     path: ["conPassword"],
   });
 
-type FormData = z.infer<typeof schema>;
+export type FormData = z.infer<typeof schema>;
 
 const Signup = () => {
   const [viewPass, setViewPass] = useState(false);

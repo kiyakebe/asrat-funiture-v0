@@ -77,7 +77,6 @@ const Login = () => {
               Password
               <input
                 type={viewPass ? "text" : "password"}
-                autoComplete="new-password"
                 className={`form-control ${style.form_input}`}
                 {...register("password")}
               />

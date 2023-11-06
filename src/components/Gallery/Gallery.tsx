@@ -1,16 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./style.module.css";
 import apiClient from "../../services/api-client";
-interface Products {
-  id: number;
-  title: string;
-  description: string;
-  slug: string;
-  inventory: number;
-  unit_price: number;
-  collection: number;
-  cover_image: string;
-}
+import { Products } from "../Shop/ProductList";
 
 const Gallery = () => {
   const [images, setImages] = useState<Products[]>([]);
@@ -27,7 +18,7 @@ const Gallery = () => {
 
   return (
     <div className="container-lg py-5">
-        <div className={style.gap_top}></div>
+      <div className={style.gap_top}></div>
       <div className={`${style.gallery}`}>
         {images &&
           images.map((image) => {
@@ -37,7 +28,7 @@ const Gallery = () => {
               </div>
             );
           })}
-          {images &&
+        {images &&
           images.map((image) => {
             return (
               <div key={image.id}>
@@ -45,7 +36,7 @@ const Gallery = () => {
               </div>
             );
           })}
-          {images &&
+        {images &&
           images.map((image) => {
             return (
               <div key={image.id}>

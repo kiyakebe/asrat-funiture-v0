@@ -5,13 +5,13 @@ import style from "./style.module.css";
 
 const Sidebar = () => {
   return (
-    <div className={` ${style.filer_bar}`}>
+    <div className={` ${style.filer_bar} flex-shrink-0 `}>
       <h4 className={`fs-5 fw-semibold py-3 mb-3 ${style.side_bar_head}`}>Categories</h4>
       <ul className="list-unstyled ps-0">
         <li className="my-2">Indoor Products</li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#living"
             aria-expanded="false"
@@ -38,7 +38,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#dining"
             aria-expanded="false"
@@ -65,7 +65,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#bed"
             aria-expanded="false"
@@ -92,7 +92,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#office"
             aria-expanded="false"
@@ -119,7 +119,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#kitchen"
             aria-expanded="false"
@@ -147,7 +147,7 @@ const Sidebar = () => {
         <li className="my-2">Outdoor Products</li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#Oliving"
             aria-expanded="false"
@@ -174,7 +174,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#Odining"
             aria-expanded="false"
@@ -201,7 +201,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#WindowAndDoor"
             aria-expanded="false"
@@ -228,7 +228,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-2">
           <button
-            className={`btn btn-toggle px-0 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
+            className={`btn btn-toggle pe-2 py-2 collapsed w-100 d-flex justify-content-between ${style.btn_toggle}`}
             data-bs-toggle="collapse"
             data-bs-target="#WallArt"
             aria-expanded="false"

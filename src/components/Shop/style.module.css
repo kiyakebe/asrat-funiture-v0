@@ -1,4 +1,28 @@
-
+/* ============================== Product List ============================== */
+.product_list{
+    padding: 1rem;
+    height: auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+@media only screen and (min-width: 500px) {
+    .product_list{
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media only screen and (min-width: 900px) {
+    .product_list{
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.product_img{
+    width: 100%;
+}
 /* ============================== Filter ============================== */
 .filer_bar{
     width: 260px;
@@ -34,5 +58,5 @@
     background-color: #e6e8ef;
 }
 .filer_bar::-webkit-scrollbar-thumb{
-    background-color: #344573;
+    background-color: #797979;
 }

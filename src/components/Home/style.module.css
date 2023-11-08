@@ -4,6 +4,9 @@
   background-image: url(../../assets/bg/bg.svg);
   background-size: cover;
 }
+.stop_space{
+  height: 4rem;
+}
 
 .hero_description .lead_head {
   font-size: calc(2vw + 20px);

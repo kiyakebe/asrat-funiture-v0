@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../../services/api-client";
+import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -19,8 +20,7 @@ export interface Products {
 
 const ProductList = ({ filter_key }: { filter_key: number }) => {
   const [products, setProducts] = useState<Products[]>([]);
-  let cartId = ""
-
+  let cartId = "";
   // const [filteredProducts, setFilteredProducts] = useState<Products[]>([]);
 
   useEffect(() => {
@@ -34,7 +34,6 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
 
   if (localStorage.getItem("cart_id")) {
     cartId = JSON.stringify(localStorage.getItem("cart_id"));
-    console.log(cartId)
   } else {
     const createCart = () => {
       apiClient
@@ -50,16 +49,51 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
 
   const data = {
     product_id: 7,
-    quantity: 3,
+    quantity: 1,
   };
 
-  const handleAddToCart = () => {};
+  console.log(cartId);
 
-  const handleOrder = () => {
+  const handleAddToCart = () => {
     apiClient
-      .get("/store/carts/931de929-5e96-4cc6-b273-6442af7006c4/items/")
+      .post(`/store/carts/${cartId}/items/`, data)
       .then((res) => {
         console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // const handleOrder = () => {
+  //   apiClient
+  //     .get(`/store/carts/9d80b0a7-31c7-401b-a6fd-25209f2115c5/items/`)
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+
+  const handleOrder = () => {
+    const order_data = {
+      cart_id: "056f3c11-4c2c-470d-a723-fd61ff17b737",
+    };
+
+    const token = localStorage.getItem("access");
+    axios.interceptors.request.use(
+      (config) => {
+        config.headers.Authorization = `JWT ${token}`;
+        console.log(`JWT ${token}`);
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+
+    axios
+      .post("http://127.0.0.1:8000/store/orders/", order_data)
+      .then((res) => {
+        localStorage.removeItem("cart_id")
+        console.log(res)
       })
       .catch((error) => console.log(error));
   };
@@ -67,9 +101,6 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
   return (
     <div className={style.product_list}>
       {products.map((product) => {
-        {
-          // console.log(product.id);
-        }
         return (
           <div key={product.id} className={style.product_card}>
             <img src={product.cover_image} className={style.product_img} />
@@ -91,6 +122,7 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
                   <FontAwesomeIcon
                     icon={faCartShopping}
                     className={style.icons}
+                    onClick={handleOrder}
                   />
                 </button>
               </div>

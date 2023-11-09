@@ -47,16 +47,27 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
     createCart();
   }
 
-  const data = {
-    product_id: 7,
-    quantity: 1,
+  console.log(cartId);
+  
+
+  const handleAddToCart = (product_id: number) => {
+
+    const data = {
+      product_id: product_id,
+      quantity: 1,
+    };
+
+    apiClient
+      .post(`/store/carts/4ee3b74e-1000-411e-aca2-a4e1b661cf07/items/`, data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
   };
 
-  console.log(cartId);
-
-  const handleAddToCart = () => {
+  const handleOrder = () => {
     apiClient
-      .post(`/store/carts/${cartId}/items/`, data)
+      .get(`/store/carts/4ee3b74e-1000-411e-aca2-a4e1b661cf07/items/`)
       .then((res) => {
         console.log(res);
       })
@@ -64,39 +75,30 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
   };
 
   // const handleOrder = () => {
+  //   const order_data = {
+  //     cart_id: "4ee3b74e-1000-411e-aca2-a4e1b661cf07",
+  //   };
+
+  //   const token = localStorage.getItem("access");
+  //   apiClient.interceptors.request.use(
+  //     (config) => {
+  //       config.headers.Authorization = `JWT ${token}`;
+  //       console.log(`JWT ${token}`);
+  //       return config;
+  //     },
+  //     (error) => {
+  //       return Promise.reject(error);
+  //     }
+  //   );
+
   //   apiClient
-  //     .get(`/store/carts/9d80b0a7-31c7-401b-a6fd-25209f2115c5/items/`)
+  //     .post("http://127.0.0.1:8000/store/orders/", order_data)
   //     .then((res) => {
-  //       console.log(res);
+  //       localStorage.removeItem("cart_id")
+  //       console.log(res)
   //     })
   //     .catch((error) => console.log(error));
   // };
-
-  const handleOrder = () => {
-    const order_data = {
-      cart_id: "056f3c11-4c2c-470d-a723-fd61ff17b737",
-    };
-
-    const token = localStorage.getItem("access");
-    axios.interceptors.request.use(
-      (config) => {
-        config.headers.Authorization = `JWT ${token}`;
-        console.log(`JWT ${token}`);
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-
-    axios
-      .post("http://127.0.0.1:8000/store/orders/", order_data)
-      .then((res) => {
-        localStorage.removeItem("cart_id")
-        console.log(res)
-      })
-      .catch((error) => console.log(error));
-  };
 
   return (
     <div className={style.product_list}>
@@ -115,7 +117,7 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
                   <FontAwesomeIcon
                     icon={faHeart}
                     className={style.icons}
-                    onClick={handleAddToCart}
+                    onClick={() => handleAddToCart(product.id)}
                   />
                 </button>
                 <button className="btn">

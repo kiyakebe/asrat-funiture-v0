@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
 import profile from "../../../assets/profile/user.jpg";
 import apiClient from "../../../services/api-client";
 
 const ProfileDropdown = () => {
-
-  const navigation = useNavigate()
+  const navigation = useNavigate();
 
   useEffect(() => {
-    document.title = "Your Profile"
-  })
+    document.title = "Your Profile";
+  });
 
   return (
     <div className={`dropdown text-end ${style.drop_down}`}>
@@ -22,11 +21,7 @@ const ProfileDropdown = () => {
         data-bs-toggle="dropdown"
         aria-expanded="true"
       >
-        <img
-          src={profile}
-          alt="mdo"
-          className={style.profile}
-        />
+        <img src={profile} alt="mdo" className={style.profile} />
       </a>
       <ul className="dropdown-menu text-small" aria-labelledby="useProfile">
         <li>
@@ -43,11 +38,15 @@ const ProfileDropdown = () => {
           <hr className="dropdown-divider" />
         </li>
         <li>
-          <button type="button" className="btn btn-outline-primary w-100" onClick={() => {
+          <button
+            type="button"
+            className="btn btn-outline-primary w-100"
+            onClick={() => {
               localStorage.removeItem("access");
               localStorage.removeItem("refresh");
-              navigation("/login")
-          }}>
+              navigation("/login");
+            }}
+          >
             Sign out
           </button>
         </li>
@@ -92,11 +91,13 @@ const Header = () => {
         .then((res) => {
           setIsLodegin(true);
         })
-        .catch((errors) => setIsLodegin(false));
+        .catch((errors) => {
+          console.log(errors);
+          setIsLodegin(false);
+        });
     };
     access && checkLigedin();
   }, []);
-  
 
   return (
     <nav
@@ -143,6 +144,21 @@ const Header = () => {
             <li className="nav-item">
               <NavLink className={style.links} to="/about">
                 About
+              </NavLink>
+            </li>
+          </ul>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink to="shop/cart" className={style.links}>
+                Cart
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="shop/wishlist"
+                className={style.links}
+              >
+                Wishlist
               </NavLink>
             </li>
           </ul>

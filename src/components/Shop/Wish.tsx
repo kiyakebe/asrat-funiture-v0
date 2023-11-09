@@ -1,8 +1,10 @@
-
 const Wish = () => {
   return (
-    <div>Wish</div>
-  )
-}
+    <>
+      <div className="py-1">.</div>
+      <div className="container-md">Wish</div>
+    </>
+  );
+};
 
-export default Wish
+export default Wish;

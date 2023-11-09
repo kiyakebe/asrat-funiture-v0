@@ -11,6 +11,9 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
 import Gallery from "./pages/Gallery";
+import Shopping from "./components/Shop/Shopping";
+import Cart from "./components/Shop/Cart";
+import Wish from "./components/Shop/Wish";
 
 // Authentication
 import Login from "./pages/Login";
@@ -43,16 +46,26 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/shop" element={<Shop />} />
+          
+          <Route path="/shop" element={<Shop />}>
+            <Route index element={<Shopping />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="wishlist" element={<Wish />} />
+          </Route>
+
           <Route path="/gallery" element={<Gallery />} />
           {islogedin && <Route path="/profile" element={<ProfilePage />} />}
-          <Route path="*" element={<FOF />} />
         </Route>
+        <Route path="*" element={<FOF />} />
 
         {!islogedin && <Route path="/login" element={<Login />} />}
         {!islogedin && <Route path="/signup" element={<Signup />} />}
-        {!islogedin && <Route path="/reset-password" element={<ForgotPass />} />}
-        {!islogedin && <Route path="/set-new-password" element={<SetNewPass />} />}
+        {!islogedin && (
+          <Route path="/reset-password" element={<ForgotPass />} />
+        )}
+        {!islogedin && (
+          <Route path="/set-new-password" element={<SetNewPass />} />
+        )}
       </Routes>
       {location.pathname}
     </Router>

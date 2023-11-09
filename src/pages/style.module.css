@@ -2,3 +2,14 @@
     height: 4rem;
     /* background-color: black; */
 }
+
+.fof{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fof_img{
+    width: 50%;
+}

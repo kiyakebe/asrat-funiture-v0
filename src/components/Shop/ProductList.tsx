@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../../services/api-client";
-import axios from "axios";
+
+import { ToastContainer, toast } from "react-toastify";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -20,6 +21,8 @@ export interface Products {
 
 const ProductList = ({ filter_key }: { filter_key: number }) => {
   const [products, setProducts] = useState<Products[]>([]);
+  const cart_created = (message: string) => toast.success(message);
+  // const notify = (message: string) => toast.success(message);
   let cartId = "";
   // const [filteredProducts, setFilteredProducts] = useState<Products[]>([]);
 
@@ -48,10 +51,8 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
   }
 
   console.log(cartId);
-  
 
   const handleAddToCart = (product_id: number) => {
-
     const data = {
       product_id: product_id,
       quantity: 1,
@@ -61,6 +62,7 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
       .post(`/store/carts/4ee3b74e-1000-411e-aca2-a4e1b661cf07/items/`, data)
       .then((res) => {
         console.log(res);
+        cart_created("Product added to cart successfully");
       })
       .catch((error) => console.log(error));
   };
@@ -101,37 +103,42 @@ const ProductList = ({ filter_key }: { filter_key: number }) => {
   // };
 
   return (
-    <div className={style.product_list}>
-      {products.map((product) => {
-        return (
-          <div key={product.id} className={style.product_card}>
-            <img src={product.cover_image} className={style.product_img} />
-            <div className="d-flex my-3 p-2">
-              <div className="fle flex-grow-1">
-                <h5 className="text-capitalize cl-primary">{product.title}</h5>
-                <h6>{product.unit_price} ETB</h6>
-                <p>{`#${product.collection}`}</p>
-              </div>
-              <div className="d-flex flex-column align-self-end">
-                <button className="btn">
-                  <FontAwesomeIcon
-                    icon={faHeart}
-                    className={style.icons}
-                    onClick={() => handleAddToCart(product.id)}
-                  />
-                </button>
-                <button className="btn">
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    className={style.icons}
-                    onClick={handleOrder}
-                  />
-                </button>
+    <div>
+      <ToastContainer position="top-center" />
+      <div className={style.product_list}>
+        {products.map((product) => {
+          return (
+            <div key={product.id} className={style.product_card}>
+              <img src={product.cover_image} className={style.product_img} />
+              <div className="d-flex my-3 p-2">
+                <div className="fle flex-grow-1">
+                  <h5 className="text-capitalize cl-primary">
+                    {product.title}
+                  </h5>
+                  <h6>{product.unit_price} ETB</h6>
+                  <p>{`#${product.collection}`}</p>
+                </div>
+                <div className="d-flex flex-column align-self-end">
+                  <button className="btn">
+                    <FontAwesomeIcon
+                      icon={faHeart}
+                      className={style.icons}
+                      onClick={() => handleAddToCart(product.id)}
+                    />
+                  </button>
+                  <button className="btn">
+                    <FontAwesomeIcon
+                      icon={faCartShopping}
+                      className={style.icons}
+                      onClick={handleOrder}
+                    />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

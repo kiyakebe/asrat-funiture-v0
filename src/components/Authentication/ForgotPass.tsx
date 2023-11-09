@@ -2,10 +2,12 @@ import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import apiClient from "../../services/api-client";
+import { ToastContainer, toast } from "react-toastify";
+
+import { useEffect, useState } from "react";
 
 import style from "./style.module.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 const schema = z.object({
   email: z
@@ -17,6 +19,9 @@ type FormData = z.infer<typeof schema>;
 
 const ForgotPass = () => {
   const [isReset, setIsReset] = useState(false);
+  const reset = (message: string) => toast.success(message);
+  const navigation = useNavigate();
+
   useEffect(() => {
     document.title = "Reset Your Password";
   });
@@ -32,9 +37,14 @@ const ForgotPass = () => {
     apiClient
       .post("/auth/users/reset_password/", data)
       .then((res) => {
-        console.log(res.status);
         if (res.status === 204) {
           setIsReset(true);
+          reset(
+            "We have sent an email to you account, go and reset your password. "
+          );
+          setTimeout(() => {
+            navigation("/");
+          }, 2000);
         }
       })
       .catch((errors) => console.log(errors));
@@ -45,45 +55,40 @@ const ForgotPass = () => {
       className="container-fluid d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
-      {isReset ? (
-        <div className="alert alert-success">
-          <strong>Success! </strong>We have sent an email to you account, go and
-          reset your password.
-        </div>
-      ) : (
-        <form
-          method="POST"
-          className={`card p-5 ${style.form_login}`}
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="my-3">
-            <h3 className={style.form_title}>Reset</h3>
-          </div>
-          <div className="my-3">
-            <label className="fs-6 w-100 cl-primary fw-medium ">
-              Email
-              <input
-                type="text"
-                className={`form-control ${style.form_input}`}
-                {...register("email")}
-              />
-            </label>
-            {errors.email && (
-              <p className="text-danger"> {errors.email.message} </p>
-            )}
-          </div>
-          <button type="submit" className={style.form_button}>
-            Reset
-          </button>
+      <ToastContainer position="top-center" autoClose={1000} />
 
-          <div className="mt-3 d-flex">
-            <p className="mx-1">Forgot Password? </p>
-            <a href="/login" className="mx-1">
-              Login
-            </a>
-          </div>
-        </form>
-      )}
+      <form
+        method="POST"
+        className={`card p-5 ${style.form_login}`}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="my-3">
+          <h3 className={style.form_title}>Reset</h3>
+        </div>
+        <div className="my-3">
+          <label className="fs-6 w-100 cl-primary fw-medium ">
+            Email
+            <input
+              type="text"
+              className={`form-control ${style.form_input}`}
+              {...register("email")}
+            />
+          </label>
+          {errors.email && (
+            <p className="text-danger"> {errors.email.message} </p>
+          )}
+        </div>
+        <button type="submit" className={style.form_button}>
+          Reset
+        </button>
+
+        <div className="mt-3 d-flex">
+          <p className="mx-1">Forgot Password? </p>
+          <a href="/login" className="mx-1">
+            Login
+          </a>
+        </div>
+      </form>
     </div>
   );
 };

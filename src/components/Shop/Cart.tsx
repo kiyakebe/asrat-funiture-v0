@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../../services/api-client";
+import { ToastContainer, toast } from 'react-toastify';
 import { Products } from "./ProductList";
 
 import car_img from "../../assets/icons/cart.png";
@@ -12,6 +13,7 @@ interface CartItem {
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const notify = (message: string) => toast.success(message);
 
   useEffect(() => {
     const displayCart = () => {
@@ -26,6 +28,7 @@ const Cart = () => {
     displayCart();
   }, []);
 
+
   const handleRemove = (item_id: number) => {
     apiClient
       .delete(
@@ -33,12 +36,18 @@ const Cart = () => {
       )
       .then((res) => {
         console.log(res);
+        setCartItems(cartItems.filter(car => car.id != item_id));
+        notify("Cart Removed Successfully")
       })
       .catch((errors) => console.log(errors));
   };
 
   return (
     <div className="container-md">
+      <ToastContainer 
+      position="top-center"
+      autoClose={1000}
+      />
       <div className="py-1">.</div>
       <h4 className="cl-primary">YOUR CARTS</h4>
       <table className="w-100">

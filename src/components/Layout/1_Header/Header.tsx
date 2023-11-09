@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
 import profile from "../../../assets/profile/user.jpg";
@@ -45,9 +45,10 @@ const ProfileDropdown = () => {
               localStorage.removeItem("access");
               localStorage.removeItem("refresh");
               navigation("/login");
+              document.location.reload();
             }}
           >
-            Sign out
+            Logout
           </button>
         </li>
       </ul>
@@ -73,11 +74,6 @@ const LoginButton = () => {
     </div>
   );
 };
-
-// const logoutHanler = () => {
-//   localStorage.removeItem("access");
-//   localStorage.removeItem("refresh");
-// }
 
 const Header = () => {
   const [islogedin, setIsLodegin] = useState(false);
